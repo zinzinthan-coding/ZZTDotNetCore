@@ -1,0 +1,103 @@
+﻿@model BlogDataResponseModel
+
+@{
+    ViewData["Title"] = "Blog List";
+    string message = null;
+    bool isSuccess = false;
+    if (TempData["Message"] != null)
+    {
+        message = TempData["Message"].ToString();
+        isSuccess = Convert.ToBoolean(TempData["IsSuccess"]);
+    }
+    int pageNo = Model.PageSetting.PageNo;
+    int pageSize = Model.PageSetting.PageSize;
+    int pageCount = Model.PageSetting.PageCount;
+    string url = Model.PageSetting.PageUrl;
+    int count = (pageNo - 1) * pageSize;
+}
+<h4>
+    <a href="/blogajax/create" class="btn btn-success"><i class="fa-solid fa-plus"></i></a> Blog List
+</h4>
+
+@* @if (message is not null)
+{
+    <div class="alert alert-@(isSuccess?"success" :"danger") role="alert">
+        @message
+    </div>
+}
+ *@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Content</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Blogs)
+        {
+            <tr>
+                <th scope="row">@(++count)</th>
+                <td>@item.Blog_Title</td>
+                <td>@item.Blog_Author</td>
+                <td>@item.Blog_Content</td>
+                <td>
+                    @* <a class="btn btn-warning" href="/blogajax/edit/@item.Blog_Id">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a> *@
+                    <button type="button" class="btn btn-warning" id="btnEdit" onclick="editBtnClick(@item.Blog_Id)">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" id="btnDelete" onclick="deleteBtnClick(@item.Blog_Id)">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        function editBtnClick(id) {
+            $.ajax({
+                url: '/blogajax/edit',
+                type: 'GET',
+                data: {
+                    id: id
+                },
+                success: function (data) {
+                    if (data!=null)
+                        location.href = "/blogajax/edit?id=" + id;
+                },
+                error: function (request, status, error) {
+                    console.log({ request, status, error });
+                }
+            })
+        }
+
+        function deleteBtnClick(id) {
+            confirmMessage("Are you sure want to delete?").then((result) => {
+                if (result) {
+                    $.ajax({
+                        url: '/blogajax/delete',
+                        type: 'GET',
+                        data: {
+                            id: id
+                        },
+                        success: function (data) {
+                            showMessage(data, "/blogajax/list");
+                        },
+                        error: function (request, status, error) {
+                            console.log({ request, status, error });
+                        }
+                    })
+                }
+            });
+        }
+    </script>
+}
+
+@await Html.PartialAsync("_Pagination", Model.PageSetting)

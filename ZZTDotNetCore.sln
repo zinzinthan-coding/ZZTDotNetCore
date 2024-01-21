@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34221.43
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.ConsoleApp", "ZZTDotNetCore.ConsoleApp\ZZTDotNetCore.ConsoleApp.csproj", "{44537E2C-AAD6-4ECC-88A4-2869B26A7402}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.RestApi", "ZZTDotNetCore.RestApi\ZZTDotNetCore.RestApi.csproj", "{A09557AB-404C-4D2E-A771-C5AE5D26A412}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{5269453D-64FF-4B63-BDDF-B696190E19ED}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.MvcApp", "ZZTDotNetCore.MvcApp\ZZTDotNetCore.MvcApp.csproj", "{C3887801-AA63-45AA-BA1A-87068A9B6577}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.ThemeMvcApp", "ZZTDotNetCore.ThemeMvcApp\ZZTDotNetCore.ThemeMvcApp.csproj", "{82C681D4-7423-4ED1-81D8-71BB510C89F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.AtmWebApp", "ZZTDotNetCore.AtmWebApp\ZZTDotNetCore.AtmWebApp.csproj", "{C9D4F28B-41C4-453E-A29A-E9FAAA1888CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.MinimalApi", "ZZTDotNetCore.MinimalApi\ZZTDotNetCore.MinimalApi.csproj", "{8A618D77-8129-4042-B88A-25B946AFA708}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.DbFirstCommandApp", "ZZTDotNetCore.DbFirstCommandApp\ZZTDotNetCore.DbFirstCommandApp.csproj", "{E31AC71D-C225-4534-A916-A713C842DEDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZZTDotNetCore.LoggingConsoleApp", "ZZTDotNetCore.LoggingConsoleApp\ZZTDotNetCore.LoggingConsoleApp.csproj", "{541080AE-E309-4E7C-A2B5-8C10288B67DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZZTDotNetCore.ShoppingCartMvcApp", "ZZTDotNetCore.ShoppingCartMvcApp\ZZTDotNetCore.ShoppingCartMvcApp.csproj", "{4184CCE2-6C99-41FA-83FF-539CE4025290}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44537E2C-AAD6-4ECC-88A4-2869B26A7402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44537E2C-AAD6-4ECC-88A4-2869B26A7402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44537E2C-AAD6-4ECC-88A4-2869B26A7402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44537E2C-AAD6-4ECC-88A4-2869B26A7402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09557AB-404C-4D2E-A771-C5AE5D26A412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09557AB-404C-4D2E-A771-C5AE5D26A412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A09557AB-404C-4D2E-A771-C5AE5D26A412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09557AB-404C-4D2E-A771-C5AE5D26A412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3887801-AA63-45AA-BA1A-87068A9B6577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3887801-AA63-45AA-BA1A-87068A9B6577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3887801-AA63-45AA-BA1A-87068A9B6577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3887801-AA63-45AA-BA1A-87068A9B6577}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82C681D4-7423-4ED1-81D8-71BB510C89F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82C681D4-7423-4ED1-81D8-71BB510C89F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82C681D4-7423-4ED1-81D8-71BB510C89F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82C681D4-7423-4ED1-81D8-71BB510C89F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9D4F28B-41C4-453E-A29A-E9FAAA1888CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9D4F28B-41C4-453E-A29A-E9FAAA1888CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9D4F28B-41C4-453E-A29A-E9FAAA1888CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9D4F28B-41C4-453E-A29A-E9FAAA1888CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A618D77-8129-4042-B88A-25B946AFA708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A618D77-8129-4042-B88A-25B946AFA708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A618D77-8129-4042-B88A-25B946AFA708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A618D77-8129-4042-B88A-25B946AFA708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31AC71D-C225-4534-A916-A713C842DEDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31AC71D-C225-4534-A916-A713C842DEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31AC71D-C225-4534-A916-A713C842DEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31AC71D-C225-4534-A916-A713C842DEDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{541080AE-E309-4E7C-A2B5-8C10288B67DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{541080AE-E309-4E7C-A2B5-8C10288B67DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{541080AE-E309-4E7C-A2B5-8C10288B67DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{541080AE-E309-4E7C-A2B5-8C10288B67DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4184CCE2-6C99-41FA-83FF-539CE4025290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4184CCE2-6C99-41FA-83FF-539CE4025290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4184CCE2-6C99-41FA-83FF-539CE4025290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4184CCE2-6C99-41FA-83FF-539CE4025290}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83EFE67A-7BB7-420F-9273-2C36E7926D95}
+	EndGlobalSection
+EndGlobal
