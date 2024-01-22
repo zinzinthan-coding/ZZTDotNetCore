@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Security.Principal;
+using System.Text.Json;
 using ZZTDotNetCore.RestApi.Models;
 
 namespace ZZTDotNetCore.RestApi.Controllers
@@ -13,13 +14,13 @@ namespace ZZTDotNetCore.RestApi.Controllers
         private readonly AppDbContext _context;
         private readonly ILogger<BlogController> _logger;
 
-		public BlogController(AppDbContext context, ILogger<BlogController> logger)
-		{
-			_context = context;
-			_logger = logger;
-		}
+        public BlogController(AppDbContext context, ILogger<BlogController> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
 
-		[HttpGet]
+        [HttpGet]
         public IActionResult GetBlogs()
         {
             //try
@@ -44,8 +45,8 @@ namespace ZZTDotNetCore.RestApi.Controllers
             //    });
             //}
 
-            List<BlogDataModel> lst =_context.Blogs.ToList();
-            _logger.LogInformation("Blog List => {lst}", lst);
+            List<BlogDataModel> lst = _context.Blogs.ToList();
+            _logger.LogInformation("Blog List => {@lst}", lst);
             BlogListResponseModel model = new BlogListResponseModel
             {
                 IsSuccess = true,
@@ -59,12 +60,12 @@ namespace ZZTDotNetCore.RestApi.Controllers
         public IActionResult GetBlog(int id)
         {
             var item = _context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
-            _logger.LogInformation("Single Blog => {item}", item);
+            _logger.LogInformation("Single Blog => {@item}", item);
             if (item is null)
             {
                 // return NotFound(new { IsSuccess = false, Message="No data found."}) ;
                 var response = new { IsSuccess = false, Message = "No data found." };
-                _logger.LogError("User ID => {response}", response);
+                _logger.LogError("User ID => {@response}", response);
                 return NotFound(response);
             }
             BlogResponseModel model = new BlogResponseModel
@@ -79,28 +80,28 @@ namespace ZZTDotNetCore.RestApi.Controllers
         [HttpPost]
         public IActionResult CreateBlog(BlogDataModel blog)
         {
-            _logger.LogInformation("User input => {blog}", blog);
+            _logger.LogInformation("User input => {@blog}", blog);
             _context.Blogs.Add(blog);
             var result = _context.SaveChanges();
             BlogResponseModel model = new BlogResponseModel
             {
                 IsSuccess = result > 0,
                 Message = result > 0 ? "Saving Successful." : "Saving Failed.",
-                Data=blog
+                Data = blog
             };
-            _logger.LogInformation("Blog Create response message =>", model);
+            _logger.LogInformation("Blog Create response message =>" + JsonSerializer.Serialize(model));
             return Ok(model);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateBlog(int id, BlogDataModel blog)
         {
-            _logger.LogInformation("User input => {blog}", blog);
-            var item =_context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
+            _logger.LogInformation("User input => {@blog}", blog);
+            var item = _context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
             if (item is null)
             {
                 var response = new { IsSuccess = false, Message = "No data found." };
-                _logger.LogError("User ID => {response}", response);
+                _logger.LogError("User ID => {@response}", response);
                 return NotFound(response);
             }
 
@@ -115,20 +116,20 @@ namespace ZZTDotNetCore.RestApi.Controllers
                 Message = result > 0 ? "Update Successful." : "Updating Failed.",
                 Data = blog
             };
-            _logger.LogInformation("Blog Update response message =>", model);
+            _logger.LogInformation("Blog Update response message =>" + JsonSerializer.Serialize(model));
             return Ok(model);
         }
 
         [HttpPatch("{id}")]
-        public IActionResult PatchBlog(int id,BlogDataModel blog)
+        public IActionResult PatchBlog(int id, BlogDataModel blog)
         {
-            _logger.LogInformation("User input => {blog}", blog);
-            var item =_context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
+            _logger.LogInformation("User input => {@blog}", blog);
+            var item = _context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
 
-            if(item is null)
+            if (item is null)
             {
                 var response = new { IsSuccess = false, Message = "No data found." };
-                _logger.LogError("User ID => {response}", response);
+                _logger.LogError("User ID => {@response}", response);
                 return NotFound(response);
             }
 
@@ -159,23 +160,23 @@ namespace ZZTDotNetCore.RestApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBlog(int id)
         {
-            _logger.LogInformation("User input ID=> {id}", id);
-            var item =_context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
-            if(item is null)
+            _logger.LogInformation("User input ID=> {@id}", id);
+            var item = _context.Blogs.FirstOrDefault(x => x.Blog_Id == id);
+            if (item is null)
             {
                 var response = new { IsSuccess = false, Message = "No data found." };
-                _logger.LogError("User ID => {response}", response);
+                _logger.LogError("User ID => {@response}", response);
                 return NotFound(response);
             }
 
-           _context.Blogs.Remove(item);
+            _context.Blogs.Remove(item);
             var result = _context.SaveChanges();
             BlogResponseModel model = new BlogResponseModel
             {
                 IsSuccess = result > 0,
                 Message = result > 0 ? "Deleting Successful." : "Deleting Failed."
             };
-            _logger.LogInformation("Blog Delete response message =>", model);
+            _logger.LogInformation("Blog Delete response message =>{@model}", model);
             return Ok(model);
         }
     }
