@@ -1,11 +1,10 @@
-using log4net;
 using Microsoft.EntityFrameworkCore;
 using ZZTDotNetCore.Log4netRestApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.ClearProviders();
-builder.Logging.AddLog4Net();
+//builder.Logging.ClearProviders();
+builder.Services.AddLog4net();
 
 // Add services to the container.
 
